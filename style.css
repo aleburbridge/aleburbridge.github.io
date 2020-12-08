@@ -22,14 +22,40 @@ a {
     --clr-accent: #bae8e8;
 }
 
+@media screen and (min-width: 900px) {
+    .nav-item {
+        width: 15rem;
+        padding: 1rem;
+        color: var(--clr-light);
+        font-weight: bold;
+        overflow: hidden;
+        font-size: 1.15rem;
+    }
+}
+
 @media screen and (max-width: 900px) {
     .nav-item:first-child {
         display: none;
     }
+
+    .nav-item {
+        width: 15rem;
+        padding: 1rem;
+        color: var(--clr-light);
+        font-weight: bold;
+        overflow: hidden;
+        font-size: 1rem;
+    }
+
+    .navbar-nav {
+        height: 1.5rem;
+    }
+
     .intro-title {
         font-size: 2rem;
     }
 }
+
 body{
     background: var(--clr-light);
     color: var(--clr-dark);
@@ -64,14 +90,7 @@ body{
     overflow: hidden;
 }
 
-.nav-item {
-    width: 15rem;
-    padding: 1rem;
-    color: var(--clr-light);
-    font-weight: bold;
-    font-size: 1.15rem;
-    overflow: hidden;
-}
+
 
 #nav-home:hover, #projects:hover, #contact:hover {
     color: var(--clr-dark);
