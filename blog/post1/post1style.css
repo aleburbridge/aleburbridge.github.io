@@ -9,13 +9,12 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 
-.body-title, .title-image {
+.body-title, .by-line, .title-image {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.body-title, .title-image, .body-text {
+.body-title, .by-line, .title-image, .body-text {
     grid-column-start: 3;
     grid-column-end: 3;
 }
@@ -25,13 +24,18 @@ body {
     grid-row-end: 1;
 }
 
-.title-image {
+.by-line {
     grid-row-start: 2;
     grid-row-end: 2;
 }
 
-.body-text {
+.title-image {
     grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.body-text {
+    grid-row-start: 4;
     grid-row-end: 20;
 }
 
