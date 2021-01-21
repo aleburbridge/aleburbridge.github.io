@@ -92,7 +92,7 @@ body{
 
 
 
-#nav-home:hover, #projects:hover, #contact:hover {
+#nav-home:hover, #projects:hover, #blog:hover {
     color: var(--clr-dark);
 }
 
