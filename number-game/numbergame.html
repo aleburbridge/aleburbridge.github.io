@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number game</title>
+    <link rel="stylesheet" href="./numberstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="container">
+        <h2>
+            <p id="numberDisplay">&nbsp;</p>
+        </h2>
+
+        <div class="contents">
+            <div id="input"><input type="text" autocomplete="off" size="5" id="answer"></div><br><br>
+            <div id="showNumbers"><button onclick="numberTimerFunction()">Show Numbers</button></div>
+            <button onclick="document.getElementById('answer').value = ''" id="clearButton">Clear input field</button>
+            <button type="button" onclick="inputCheck()" id="answerButton">Submit</button>
+            <div id="length">&nbsp;<p id="lengthCount"></p></div>
+            <div id="correct">&nbsp;<p id="rightWrongDisplay"></p></div>
+        </div>
+    </div>
+
+    <script src="./numberapp.js"></script>
+</body>
+</html>

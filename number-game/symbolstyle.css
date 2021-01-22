@@ -1,0 +1,80 @@
+ html {
+    box-sizing: border-box;
+}
+  
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: rgb(26, 26, 26);
+}
+
+
+.symbolGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    color: white;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgb(5, 5, 5);
+}
+
+#symbolDisplay {
+    width: 100%;
+    font-size: 100px;
+    height: 150px;
+    border: none;
+    background-color: rgb(27, 67, 177);
+    color: white;
+    text-align: center;
+}
+
+button {
+    height: 60px;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+    font-size: 2rem;
+    color: #333;
+    background-image: linear-gradient(to bottom,transparent,transparent 50%,rgba(0,0,0,.04));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
+    text-shadow: 0 1px rgba(255,255,255,.4);
+}
+
+button:hover {
+    background-color: #eaeaea;
+}
+
+#lengthCount, #rightWrongDisplay {
+    color: black;
+}
+
+.gameButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+#showNumbers {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+}
+
+#showNumbersButton {
+    width: 100%;
+}
+
+#correct {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    text-align: right;
+}
