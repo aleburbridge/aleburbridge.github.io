@@ -59,3 +59,27 @@ body {
 .grid_img:hover {
     background-color: lightgray;
 }
+
+@media screen and (max-width: 800px) {
+    .header {
+        letter-spacing: 0;
+        text-align: center;
+    }
+    
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 15vw;
+    }
+
+    .grid-text {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .grid {
+        margin: 10vw 10vw;
+        grid-template-columns: auto;   
+        grid-template-rows: repeat(4, auto);
+    }
+}
