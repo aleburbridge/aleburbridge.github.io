@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol game</title>
+    <link rel="stylesheet" href="./symbolstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div class="symbolGame">
+        <h2>
+            <p id="symbolDisplay">&nbsp;</p>
+        </h2>
+
+        <div class="gameButtons">
+
+            <button type="button" onclick="inputCheck(0)">♥</button>
+            <button type="button" onclick="inputCheck(1)">⚑</button>
+            <button type="button" onclick="inputCheck(2)">★</button>
+            <button type="button" onclick="inputCheck(3)">☻</button>
+            <button type="button" onclick="inputCheck(4)">♞</button>
+            <button type="button" onclick="inputCheck(5)">⛹</button>
+            <button type="button" onclick="inputCheck(6)">♛</button>
+            <button type="button" onclick="inputCheck(7)">☂</button>
+            <button type="button" onclick="inputCheck(8)">♫</button>
+            <div id="showNumbers"><button onclick="numberTimerFunction()" id="showNumbersButton">start</button></div>
+            
+            <div id="length"><p id="lengthCount">Length: 3</p></div>
+            <div id="correct"><p id="rightWrongDisplay">&nbsp;</p></div>
+        </div>
+    </div>
+
+    <script src="./symbolapp.js"></script>
+</body>
+</html>

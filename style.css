@@ -1,61 +1,69 @@
 a {
-    color: darkslategray;
+    color: rgb(17, 135, 90);
     text-decoration: none;
 }
 
-.header {
-    letter-spacing: 0.5rem;
+hr {
+    height: 1px;
+    color: white;
+    background-color: white;
+    margin-bottom: 2em;
 }
 
-.links {
-    display: flex;
-    justify-content: space-around;
-    margin: 2vw 0px;
-    font-size: 1.25em;
+body {
+    background-color: rgb(24, 26, 27);
+    font-family: 'Roboto', monospace;
+    color: white;
+    margin-left: 15vw;
+    margin-right: 15vw;
 }
+
+.name {
+    font-size: 1.5em;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 20px; 
+}
+
+.links a {
+    margin-left: 1em;
+}
+
 
 #link1:hover, #link2:hover, #link3:hover {
     text-decoration: underline;
 }
 
-body {
-    font-family: 'Inconsolata', monospace;
-    color: darkslategray;
-    letter-spacing: 0.2rem;
-    margin-left: 15vw;
-    margin-right: 15vw;
-    margin-top: 5vw;
-}
-
 .grid {
     display: grid;
-    justify-content: space-evenly;   
-    grid-template-columns: repeat(2, 16vw);
-    grid-template-rows: repeat(4, 9vw);
-    grid-gap: 2vw;
-    margin: 2vw 10vw;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
 }
 
-.grid-text {
+.grid-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
 }
 
-.grid_img {
-    border: 2px solid darkslategray;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.container {
+    grid-column: span 1; /* Each container (with image) takes up one column */
 }
 
 
-.grid_img {
-    border: 2px solid darkslategray;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.container img.grid_img {
+    width: 50%;          /* reduce the image width by half */
+    height: auto;        /* maintain the aspect ratio */
+    display: block;      /* to use margin auto for centering */
+    margin: 0 auto;      /* center the image horizontally */
+    border: 2px solid white;
 }
+
 .grid_img:hover {
     background-color: lightgray;
 }
