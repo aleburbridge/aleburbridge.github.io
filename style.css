@@ -1,93 +1,27 @@
 a {
-    color: rgb(17, 135, 90);
+    color: rgb(255, 78, 78);
     text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 hr {
     height: 1px;
-    color: white;
     background-color: white;
-    margin-bottom: 2em;
+    margin: 1rem 0;
 }
 
 body {
-    background-color: rgb(41, 44, 46);
-    font-family: 'Roboto', monospace;
+    background-color: rgb(21, 21, 21);
     color: white;
     margin-left: 15vw;
     margin-right: 15vw;
+    font-family: sans-serif;
 }
 
 .name {
     font-size: 1.5em;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 10px 20px; 
-}
-
-.links a {
-    margin-left: 1em;
-}
-
-
-#link1:hover, #link2:hover, #link3:hover {
-    text-decoration: underline;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-}
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-    grid-column: span 1; /* Each container (with image) takes up one column */
-}
-
-
-.container img.grid_img {
-    width: 50%;          /* reduce the image width by half */
-    height: auto;        /* maintain the aspect ratio */
-    display: block;      /* to use margin auto for centering */
-    margin: 0 auto;      /* center the image horizontally */
-    border: 2px solid white;
-}
-
-.grid_img:hover {
-    background-color: lightgray;
-}
-
-@media screen and (max-width: 800px) {
-    .header {
-        letter-spacing: 0;
-        text-align: center;
-    }
-    
-    body {
-        margin-left: 0;
-        margin-right: 0;
-        margin-top: 15vw;
-    }
-
-    .grid-text {
-        align-items: center;
-        justify-content: center;
-    }
-
-    .grid {
-        margin: 10vw 10vw;
-        grid-template-columns: auto;   
-        grid-template-rows: repeat(4, auto);
-    }
 }

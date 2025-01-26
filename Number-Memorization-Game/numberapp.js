@@ -1,6 +1,6 @@
 var numberTimer;
 var blankSpace;
-var numberlistlength = 3;
+var numberlistlength = 5;
 let answerBox = document.getElementById("answer");
 numberArray = []
 answerArray = []
