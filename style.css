@@ -22,6 +22,9 @@ body {
     font-family: sans-serif;
 }
 
+.header {
+    margin-top: 3rem;
+}
 .name {
     font-size: 1.5em;
 }
