@@ -1,0 +1,23 @@
+{
+  "name": "alexander-bridgeman-portfolio",
+  "version": "1.0.0",
+  "description": "Alexander Bridgeman's personal portfolio website with number memorization games",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -o",
+    "dev": "npx http-server -o",
+    "serve": "npx http-server"
+  },
+  "keywords": [
+    "portfolio",
+    "memory-game",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Alexander Bridgeman",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
