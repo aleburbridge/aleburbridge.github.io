@@ -57,11 +57,11 @@ function draw(canvas, marked, hovered) {
       }
 
       if (marked.includes(idx)) {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+        ctx.fillStyle = 'rgba(240, 28, 0, 0.18)';
         ctx.fillRect(x, y, cellW, cellH);
 
         const pad = cellW * 0.13;
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.88)';
+        ctx.strokeStyle = '#ed5c46';
         ctx.lineWidth = Math.max(5, W * 0.007);
         ctx.lineCap = 'round';
         ctx.beginPath();

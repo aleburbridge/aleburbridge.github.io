@@ -22,6 +22,7 @@ hr {
 }
 
 body {
+    margin: 0;
     font-size: 1.25rem;
     background-color: rgb(14, 14, 14);
     color: white;
