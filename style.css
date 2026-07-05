@@ -14,11 +14,17 @@ hr {
     margin: 1rem 0;
 }
 
-body {
-    background-color: rgb(14, 14, 14);
-    color: white;
+.homepage-body {
+
     margin-left: 15vw;
     margin-right: 15vw;
+
+}
+
+body {
+    font-size: 1.25rem;
+    background-color: rgb(14, 14, 14);
+    color: white;
     font-family: sans-serif;
 }
 
@@ -41,4 +47,12 @@ body {
 .projects-container a {
     display: block;
     margin-bottom: 0.25rem;
+}
+
+.bingo-card {
+    width: 50vw;
+}
+
+@media (max-width: 1000px) {
+  .bingo-card {width: 100vw}
 }
