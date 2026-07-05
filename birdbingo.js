@@ -1,10 +1,10 @@
 // Grid coordinates as fractions of the 1254x1254 image's natural dimensions.
 // The blue-bordered bingo grid starts below the title + BINGO header.
 const GRID = {
-  left:  0.0136,
-  top:   0.1340,
-  cellW: 0.1948,
-  cellH: 0.1710,
+  left:  0.0400,
+  top:   0.14425,
+  cellW: 0.1845,
+  cellH: 0.1622,
   cols: 5,
   rows: 5,
 };
@@ -49,11 +49,11 @@ function draw(canvas, marked, hovered) {
       }
 
       if (marked.includes(idx)) {
-        ctx.fillStyle = 'rgba(200, 30, 30, 0.18)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
         ctx.fillRect(x, y, cellW, cellH);
 
         const pad = cellW * 0.13;
-        ctx.strokeStyle = 'rgba(210, 20, 20, 0.88)';
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.88)';
         ctx.lineWidth = Math.max(5, W * 0.007);
         ctx.lineCap = 'round';
         ctx.beginPath();
