@@ -1,5 +1,13 @@
-// Grid coordinates as fractions of the 1254x1254 image's natural dimensions.
-// The blue-bordered bingo grid starts below the title + BINGO header.
+const BINGO_LINES = [
+  [0,1,2,3,4], [5,6,7,8,9], [10,11,12,13,14], [15,16,17,18,19], [20,21,22,23,24],
+  [0,5,10,15,20], [1,6,11,16,21], [2,7,12,17,22], [3,8,13,18,23], [4,9,14,19,24],
+  [0,6,12,18,24], [4,8,12,16,20],
+];
+
+function completedLineCount(marked) {
+  return BINGO_LINES.filter(line => line.every(i => marked.includes(i))).length;
+}
+
 const GRID = {
   left:  0.0400,
   top:   0.14425,
@@ -117,9 +125,13 @@ function init() {
     const cell = cellFromPoint(pt.x, pt.y, canvas.width, canvas.height);
     if (!cell) return;
     const i = cell.index;
+    const before = completedLineCount(marked);
     marked = marked.includes(i) ? marked.filter(v => v !== i) : [...marked, i];
     saveMarked(marked);
     draw(canvas, marked, hovered);
+    if (completedLineCount(marked) > before) {
+      confetti({ particleCount: 180, spread: 80, origin: { y: 0.2 }, ticks: 400, scalar: 1.4, gravity: 1 });
+    }
   });
 
   canvas.addEventListener('touchstart', (e) => {
