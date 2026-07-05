@@ -29,6 +29,15 @@ body {
     font-size: 1.5em;
 }
 
+.ceiling-fan {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    z-index: 999;
+    pointer-events: none;
+}
+
 .projects-container a {
     display: block;
     margin-bottom: 0.25rem;
