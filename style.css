@@ -30,10 +30,10 @@ body {
 }
 
 .ceiling-fan {
-    position: relative;
+    position: absolute;
     top: 0;
-    right: 0;
-    width: 300px;
+    right: 15vw;
+    width: 200px;
     z-index: 999;
     pointer-events: none;
 }
