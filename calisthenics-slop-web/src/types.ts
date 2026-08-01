@@ -34,7 +34,16 @@ export interface UserProgressionStatus {
   unlocked_at: string;
 }
 
-export const SERIES_NAMES = ['Push-ups', 'Squats', 'Pull-ups', 'Leg Raises', 'Bridges', 'HS Push-ups'];
+export const SERIES_NAMES = ['Push-ups', 'Squats', 'Pull-ups', 'Leg Raises', 'Bridges', 'HS Push-ups', 'Fix APT'];
+
+// Fix APT alternates between two exercises daily rather than progressing through steps.
+export const FIX_APT_SERIES_ID = 7;
+
+// 1 or 2 — which of the two Fix APT exercises (step_number) is "today's", alternating by calendar day.
+export function fixAptStepForToday(): number {
+  const dayNumber = Math.floor(Date.now() / 86_400_000);
+  return (dayNumber % 2) + 1;
+}
 
 export const LOADING_MESSAGES = [
   'Sloppin it up...',

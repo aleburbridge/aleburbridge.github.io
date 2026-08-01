@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import type { User } from '@supabase/supabase-js';
 import { supabase } from './supabase';
 import type { Progression, UserProgressionStatus, WorkoutLog } from './types';
-import { isTimedHold, isToday } from './types';
+import { FIX_APT_SERIES_ID, fixAptStepForToday, isTimedHold, isToday } from './types';
 
 interface AppState {
   user: User | null;
@@ -105,10 +105,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     statusesRef.current.find(s => s.series_id === seriesId), []);
 
   const currentStep = useCallback((seriesId: number) =>
-    statusFor(seriesId)?.current_step ?? 0, [statusFor]);
+    seriesId === FIX_APT_SERIES_ID ? fixAptStepForToday() : (statusFor(seriesId)?.current_step ?? 0), [statusFor]);
 
   const beginnerDone = useCallback((seriesId: number) =>
-    statusFor(seriesId)?.beginner_done ?? false, [statusFor]);
+    seriesId === FIX_APT_SERIES_ID ? true : (statusFor(seriesId)?.beginner_done ?? false), [statusFor]);
 
   const isMastered = useCallback((seriesId: number) =>
     (statusFor(seriesId)?.current_step ?? 0) >= 11, [statusFor]);
@@ -121,6 +121,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [statusFor]);
 
   const isBeginnerPhase = useCallback((p: Progression) => {
+    if (p.series_id === FIX_APT_SERIES_ID) return false;
     const step = currentStep(p.series_id);
     const done = beginnerDone(p.series_id);
     return (step === 0 && p.step_number === 1) || (step === p.step_number && !done);
@@ -207,6 +208,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     if (logErr) throw logErr;
 
     setLogs(prev => [savedLog, ...prev]);
+
+    // Fix APT alternates by calendar day, not by gate-based progression — nothing to unlock.
+    if (progression.series_id === FIX_APT_SERIES_ID) return;
 
     const status = statusesRef.current.find(s => s.series_id === progression.series_id);
     const expectedStep = status == null ? 1 : status.current_step;

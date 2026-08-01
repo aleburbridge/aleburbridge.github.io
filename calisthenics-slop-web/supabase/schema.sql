@@ -8,7 +8,7 @@
 
 CREATE TABLE progressions (
     id              uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    series_id       int  NOT NULL CHECK (series_id BETWEEN 1 AND 6),
+    series_id       int  NOT NULL CHECK (series_id BETWEEN 1 AND 7),
     step_number     int  NOT NULL CHECK (step_number BETWEEN 1 AND 10),
     name            text NOT NULL,
     description     text NOT NULL DEFAULT '',
@@ -34,7 +34,7 @@ CREATE TABLE workout_logs (
 CREATE TABLE user_progression_status (
     id              uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id         uuid        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-    series_id       int         NOT NULL CHECK (series_id BETWEEN 1 AND 6),
+    series_id       int         NOT NULL CHECK (series_id BETWEEN 1 AND 7),
     current_step    int         NOT NULL DEFAULT 1 CHECK (current_step BETWEEN 1 AND 10),
     unlocked_at     timestamptz NOT NULL DEFAULT now(),
     UNIQUE (user_id, series_id)
@@ -74,8 +74,8 @@ CREATE POLICY "ups_update" ON user_progression_status
     FOR UPDATE TO authenticated USING (user_id = auth.uid());
 
 
--- ── Seed: 60 Progressions ────────────────────────────────────
--- series_id: 1=Push-up, 2=Squat, 3=Pull-up, 4=Leg Raise, 5=Bridge, 6=HS Push-up
+-- ── Seed: 62 Progressions ────────────────────────────────────
+-- series_id: 1=Push-up, 2=Squat, 3=Pull-up, 4=Leg Raise, 5=Bridge, 6=HS Push-up, 7=Fix APT
 -- gate_value is the Progression Standard (display string).
 -- gate_sets / gate_reps: used by the app for gate check (set/rep steps).
 -- gate_seconds: used for timed holds (HS Push-up steps 1-3).
@@ -153,4 +153,9 @@ INSERT INTO progressions (series_id, step_number, name, description, gate_value,
 (6,  7, 'Uneven Handstand Push-Ups','Handstand against wall, one hand on a book or small platform. Full range. Alternate sides.',                                         '2x10',  2, 10,  NULL, 'hspu_07'),
 (6,  8, 'Half One-Arm Handstand Push-Ups','Handstand against wall on one arm. Lower halfway, push back up. Partial range.',                                               '2x8',   2,  8,  NULL, 'hspu_08'),
 (6,  9, 'Lever Handstand Push-Ups','Handstand on one hand against wall, other arm extended to the side on a ball. Full range of motion.',                                 '2x6',   2,  6,  NULL, 'hspu_09'),
-(6, 10, 'One-Arm Handstand Push-Ups','Full one-arm handstand push-up against wall. Lower head to floor, push to full extension. Alternate arms.',                        '1x5',   1,  5,  NULL, 'hspu_10');
+(6, 10, 'One-Arm Handstand Push-Ups','Full one-arm handstand push-up against wall. Lower head to floor, push to full extension. Alternate arms.',                        '1x5',   1,  5,  NULL, 'hspu_10'),
+
+-- ── Fix APT (series 7) ───────────────────────────────────────
+-- Alternates daily between the two exercises — not a step progression, so no beginner_* columns.
+(7,  1, 'Dead Bugs',              'Lie on back, arms up and knees bent at 90 degrees. Slowly lower opposite arm and leg toward the floor while keeping lower back pressed down, then return. Alternate sides.', '2x10',  2, 10,  NULL, 'fixapt_01'),
+(7,  2, 'Posterior Tilt Plank',   'Forearm plank position. Actively tuck the pelvis under (posterior pelvic tilt) and squeeze glutes to flatten the lower back, holding the tilt for the full duration.',        '2x30S', NULL, NULL, 30,   'fixapt_02');

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../AppContext';
 import type { Progression } from '../types';
-import { beginnerGateDisplayString, calcRecommended, gateDisplayString, isTimedHold, isToday } from '../types';
+import { FIX_APT_SERIES_ID, beginnerGateDisplayString, calcRecommended, gateDisplayString, isTimedHold, isToday } from '../types';
 
 interface Props {
   progression: Progression;
@@ -13,7 +13,7 @@ export function LogWorkoutModal({ progression, onClose }: Props) {
 
   const inBeginner = app.isBeginnerPhase(progression);
   const step = app.currentStep(progression.series_id);
-  const isLocked = step === 0 ? progression.step_number > 1 : progression.step_number > step;
+  const isLocked = progression.series_id !== FIX_APT_SERIES_ID && (step === 0 ? progression.step_number > 1 : progression.step_number > step);
 
   const modeLabel = isLocked ? 'PRACTICE LOG' : inBeginner ? 'BEGINNER UNLOCK' : 'LOG WORKOUT';
   const saveLabel = isLocked ? 'SAVE PRACTICE LOG' : inBeginner ? 'ATTEMPT UNLOCK' : 'SAVE';

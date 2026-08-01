@@ -22,7 +22,7 @@ export function HomePage() {
       <div className="page-inner" style={{ maxWidth: 900, width: '100%' }}>
         <TodayWorkout />
         <div className="home-grid">
-          {[1, 2, 3, 4, 5, 6].map(id => (
+          {[1, 2, 3, 4, 5, 6, 7].map(id => (
             <SeriesCardLink key={id} seriesId={id} />
           ))}
         </div>

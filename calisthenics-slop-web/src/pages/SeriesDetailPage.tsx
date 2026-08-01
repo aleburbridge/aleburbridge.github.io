@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useApp } from '../AppContext';
-import { SERIES_NAMES, beginnerGateDisplayString, gateDisplayString } from '../types';
+import { FIX_APT_SERIES_ID, SERIES_NAMES, beginnerGateDisplayString, gateDisplayString } from '../types';
 import type { Progression } from '../types';
 
 import cornerImages from 'virtual:corner-images';
@@ -65,10 +65,12 @@ export function SeriesDetailPage() {
 }
 
 function StepRow({ progression: p, currentStep, beginnerDone }: { progression: Progression; currentStep: number; beginnerDone: boolean }) {
-  const inBeginner = (currentStep === 0 && p.step_number === 1) || (p.step_number === currentStep && currentStep > 0 && !beginnerDone);
+  // Fix APT alternates daily between two exercises — no locking/mastery, just "today's" highlight.
+  const isAlternating = p.series_id === FIX_APT_SERIES_ID;
+  const inBeginner = !isAlternating && ((currentStep === 0 && p.step_number === 1) || (p.step_number === currentStep && currentStep > 0 && !beginnerDone));
   const isActive = p.step_number === currentStep && currentStep > 0 && beginnerDone;
-  const isCompleted = currentStep > 0 && p.step_number < currentStep;
-  const isLocked = currentStep === 0 ? p.step_number > 1 : p.step_number > currentStep;
+  const isCompleted = !isAlternating && currentStep > 0 && p.step_number < currentStep;
+  const isLocked = !isAlternating && (currentStep === 0 ? p.step_number > 1 : p.step_number > currentStep);
 
   const statusColor = isLocked
     ? 'color-mix(in srgb, var(--ink) 30%, transparent)'

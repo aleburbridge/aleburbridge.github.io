@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useApp } from '../AppContext';
 import { TroughProgressBar } from './TroughProgressBar';
-import { SERIES_NAMES } from '../types';
+import { FIX_APT_SERIES_ID, SERIES_NAMES } from '../types';
 
 interface Props {
   seriesId: number;
@@ -14,6 +14,33 @@ export function SeriesCardLink({ seriesId, compact }: Props) {
   const isActive = params.seriesId === String(seriesId);
 
   const name = SERIES_NAMES[seriesId - 1];
+
+  // Fix APT alternates between two exercises daily instead of progressing through 10 steps.
+  if (seriesId === FIX_APT_SERIES_ID) {
+    const todayStep = app.currentStep(seriesId);
+    const todayProg = app.currentProgression(seriesId);
+    return (
+      <Link
+        to={`/series/${seriesId}`}
+        className={`series-card${isActive ? ' sidebar-series-active' : ''}`}
+      >
+        <div className="series-card-body">
+          <span className="series-step-count" style={{ color: 'var(--red)' }}>
+            {todayStep}/2
+          </span>
+          <div className="series-info">
+            <div className="series-name-row">
+              <span className="series-name">{name.toUpperCase()}</span>
+            </div>
+            <div className="series-prog-name">{todayProg?.name ?? '—'}</div>
+          </div>
+        </div>
+        <div className="series-card-trough">
+          <TroughProgressBar value={todayStep / 2} color="var(--red)" />
+        </div>
+      </Link>
+    );
+  }
   const displayStep = app.beginnerMetCount(seriesId);
   const mastered = app.isMastered(seriesId);
   const isUnstarted = displayStep === 0;
